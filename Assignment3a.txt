@@ -1,0 +1,14 @@
+#!/bin/bash
+for num in "$@"; do
+    rev=$(echo "$num"|rev)
+    if  [ "$num" == "$rev" ]; then
+      echo "$num is pallindrome"
+    else
+      echo "$num is not pallindrome"
+    fi
+done
+~/workspace$ sh main.sh 121 5 23 14
+121 is pallindrome
+5 is pallindrome
+23 is not pallindrome
+14 is not pallindrome

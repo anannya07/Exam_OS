@@ -1,0 +1,17 @@
+highest=0
+lowest=99999
+while IFS=',' read -r line; do
+  for number in ${line//,/ }; do
+    if [ "$number" -gt "$highest" ]; then
+      highest=$number
+    fi
+    if [ "$number" -lt "$lowest" ]; then
+      lowest=$number
+    fi
+  done
+done < "$1"
+echo "The highest number is $highest"
+echo "The lowest number is $lowest"
+# take input like 
+#12,45,56,25,3,-5,2
+#45,21,0,2,6,-10

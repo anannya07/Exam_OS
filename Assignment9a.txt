@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -p "Enter the directory path: " dir
+
+if [ -d "$dir" ]; then
+    file_count=$(ls -1 "$dir" | wc -l)
+    echo "Number of files: $file_count" > output.txt
+    echo "File names:" >> output.txt
+    ls -1 "$dir" >> output.txt
+    cat output.txt
+else
+    echo "Invalid directory."
+fi

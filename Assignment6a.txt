@@ -1,0 +1,20 @@
+
+for num in "$@"; do
+  temp=$num
+  sum=0
+  while [ $temp -gt 0 ] ; do
+    digit=$((temp % 10))
+    sum=$((sum + digit ** ${#num} ))
+    temp=$(( temp / 10 ))
+  done
+  if [ $num -eq $sum ] ; then
+    echo "$sum is a amstrong number"
+  else
+    echo "$sum is not an armstrong number"
+  fi
+  done
+~/workspace$ sh main.sh 54 153 69 12
+41 is not an armstrong number
+153 is a amstrong number
+117 is not an armstrong number
+5 is not an armstrong number

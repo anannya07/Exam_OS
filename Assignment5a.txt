@@ -1,0 +1,19 @@
+read -p "Read from file:" file
+grep -o -E '\w+' "$file"| while read -r word; do
+  cw=$(echo "$word"|tr -d '.,;')
+  rev=$(echo "$cw"|rev)
+  if [ "$cw" == "$rev" ] ; then
+    echo "$cw is pallindrome"
+  else
+    echo "$cw is not pallindrome"
+  fi
+done
+    
+~/workspace$ sh main.sh
+Read from file:p.txt
+a is pallindrome
+aa is pallindrome
+ghty is not pallindrome
+am is not pallindrome
+a is pallindrome
+boy is not pallindrome

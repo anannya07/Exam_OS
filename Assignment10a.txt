@@ -1,0 +1,19 @@
+highest=0
+roll=""
+name=""
+
+# Using a proper while loop with `read` for the file.
+while IFS='|' read -r r n m ; do
+  if [ "$m" -gt "$highest" ]; then
+    highest="$m"
+    roll="$r"
+    name="$n"
+  fi
+done < "$1"
+
+echo "The name of the student with highest marks: $name"
+echo "The roll of the student with highest marks: $roll"
+~/workspace$ sh main.sh p.txt
+The name of the student with highest marks: B
+The roll of the student with highest marks: 13
+~/workspace$ 

@@ -1,0 +1,10 @@
+read -p "Enter the value of x: " x
+read -p "Enter the number of terms: " n
+sum=1
+for ((i=2; i<=n; i++)); do
+    m=$(($x / 2))
+    term=$(( $(((-1) ** i)) * $((m ** i)) ))
+    sum=$(( $sum + $term ))
+    #sum=$(echo "$sum + $term" | bc)
+done
+echo "The sum is: $sum"

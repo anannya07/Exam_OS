@@ -1,0 +1,16 @@
+for file in "$@"; do
+  if [ -f "$file" ]; then  
+    lines=$(wc -l < "$file")
+    words=$(wc -w < "$file")
+    characters=$(wc -c < "$file")
+    echo "File:$file"
+    echo "Lines:$lines , words: $words , characters: $characters"
+    else
+      echo "file not found"
+  fi
+done
+~/workspace$ sh main.sh p.txt q.txt
+File:p.txt
+Lines:2 , words: 8 , characters: 30
+File:q.txt
+Lines:2 , words: 5 , characters: 16

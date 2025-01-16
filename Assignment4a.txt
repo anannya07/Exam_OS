@@ -1,0 +1,14 @@
+#!/bin/bash
+#if u want to take command line argument take n=$1 and sh filename.sh 5 this 5 will be taken as $1
+# n=$1
+read -p "Enter the number:" n
+
+a=0
+b=1
+echo "Fibonacci sequence up to $n terms: " >>fibonacci.text
+for (( i=0; i<n; i++ )); do
+  echo "$a " >>fibonacci.txt
+  c=$(( a + b ))
+  a=$b
+  b=$c
+done
