@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Prompt for file name
+read -p "Enter the input file name: " filename
+
+
+# Prompt for Roll number to update
+read -p "Enter the Roll number of the student to update marks: " roll
+
+# Prompt for new marks
+read -p "Enter the new marks: " new_marks
+
+# Create a temporary file for updates
+tempfile=$(mktemp)
+
+# Flag to track if roll number is found
+found=false
+
+# Update the record
+while IFS='|' read -r r name marks; do
+  if [[ "$r" == "$roll" ]]; then
+    echo "$r|$name|$new_marks" >> "$tempfile"
+    found=true
+  else
+    echo "$r|$name|$marks" >> "$tempfile"
+  fi
+done < "$filename"
+
+# Check if the roll number was found and print a message
+if [[ "$found" == false ]]; then
+  echo "Roll number $roll not found."
+else
+  # Replace the original file with the updated file
+  mv "$tempfile" "$filename"
+  echo "Marks updated successfully. Updated file contents:"
+  cat "$filename"
+fi
+
+
+~/workspace$ sh main.sh 
+Enter the input file name: p.txt
+Enter the Roll number of the student to update marks: 4
+Enter the new marks: 56
+Marks updated successfully. Updated file contents:
+9|kj|56
+4|jk|56
+3|ui|78
+~/workspace$ sh main.sh 
+Enter the input file name: p.txt
+Enter the Roll number of the student to update marks: 2
+Enter the new marks: 45
+Roll number 2 not found.
