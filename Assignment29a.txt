@@ -1,0 +1,27 @@
+#!/bin/bash
+# Take two directories as input
+echo "Enter the first directory:"
+read dir1
+echo "Enter the second directory:"
+read dir2
+
+# Ensure directories exist
+if [ ! -d "$dir1" ] || [ ! -d "$dir2" ]; then
+    echo "One or both directories do not exist."
+    exit 1
+fi
+
+# Count the number of files in the first directory
+count1=$(ls -1 "$dir1" | wc -l)
+
+# Count the number of files in the second directory
+count2=$(ls -1 "$dir2" | wc -l)
+
+# Compare the number of files in the directories
+if [ $count1 -gt $count2 ]; then
+    echo "$dir1 has more files ($count1 files)."
+elif [ $count2 -gt $count1 ]; then
+    echo "$dir2 has more files ($count2 files)."
+else
+    echo "Both directories have the same number of files ($count1 files each)."
+fi
