@@ -1,0 +1,48 @@
+################################ using cmd###################
+num1=$1
+num2=$2
+gcd(){
+a=$1
+b=$2
+while [ "$b" -ne 0 ]; do
+  temp=$b
+  b=$(( a % b ))
+  a=$temp
+done
+echo "$a"
+}
+lcm(){
+a=$1
+b=$2
+calgcd=$(gcd $a $b)
+echo "$(( (a * b) / calgcd ))"
+}
+result1=$(gcd $num1 $num2)
+result2=$(lcm $num1 $num2)
+echo "The gcd of $num1 and $num2 is: $result1"
+echo "The lcm of $num1 and $num2 is: $result2"
+####################Using normal input############################
+echo "Enter first number:"
+read num1
+echo "Enter second number:"
+read num2
+gcd(){
+a=$1
+b=$2
+while [ "$b" -ne 0 ]; do
+  temp=$b
+  b=$(( a % b ))
+  a=$temp
+done
+echo "$a"
+}
+lcm(){
+a=$1
+b=$2
+calgcd=$(gcd $a $b)
+echo "$(( (a * b) / calgcd ))"
+}
+result1=$(gcd $num1 $num2)
+result2=$(lcm $num1 $num2)
+echo "The gcd of $num1 and $num2 is: $result1"
+echo "The lcm of $num1 and $num2 is: $result2"
