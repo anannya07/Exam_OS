@@ -1,0 +1,36 @@
+#!/bin/bash
+
+lower=$1
+upper=$2
+
+# Function to check if a number is prime
+is_prime() {
+  num=$1
+  if [ "$num" -lt 2 ]; then
+    return 1 # Not prime
+  fi
+  for ((i = 2; i * i <= num; i++)); do
+    if ((num % i == 0)); then
+      return 1 # Not prime
+    fi
+  done
+  return 0 # Prime
+}
+
+# Loop through the range and check for primes
+echo "Prime numbers between $lower and $upper:"
+for ((n = lower; n <= upper; n++)); do
+  if is_prime "$n"; then
+    echo "$n"
+  fi
+done
+
+##################
+~/workspace$ sh main.sh  6 8
+Prime numbers between 6 and 8:
+7
+~/workspace$ sh main.sh  1 5
+Prime numbers between 1 and 5:
+2
+3
+5
