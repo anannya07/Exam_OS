@@ -1,0 +1,12 @@
+read -p "Enter the name of the file: " file
+##read -p "Enter the number of records want to enter" n
+##for ((i=1; i<=n ;++i)) ; do
+##echo "Enter the new record:$i"
+  ##read -p "Ënter roll :" roll
+  ##read -p "Enter name :" name
+  ##read -p "Enter marks :" marks
+  ##echo "$roll|$name|$marks" >> $file
+##done
+read -p "Enter the roll number to delete:" roll1
+sed -i "/^$roll1/d" $file
+cat "$file"
