@@ -1,0 +1,11 @@
+read -p "Enter the value of n:" n
+read -p "Enter the value of x" x
+case $n in
+1) y=$(( 1 +  x ** 2 ));;
+2) y=$(( 1 +  x / n ));;
+3) y=$(( 1 + 2 * x  ));;
+*) y=$(( 1 + n * x ));;
+esac
+echo "The value of y is $y"
+
+#y=$(echo "1 + $x^2" | bc)
