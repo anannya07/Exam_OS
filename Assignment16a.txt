@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Read the input date in dd/mm/yyyy format
+read -p "Enter the date (dd/mm/yyyy): " input_date
+
+# Set IFS to "/"
+IFS="/" read -r day month year <<< "$input_date"
+
+# Strip leading zeros from day, month, and year
+day=${day#0}
+month=${month#0}
+year=${year#0}
+
+# Days in months (index 0=Jan, 11=Dec)
+month_days=(31 28 31 30 31 30 31 31 30 31 30 31)
+
+# Leap year check
+if (( year % 400 == 0 )) || (( year % 4 == 0 && year % 100 != 0 )); then
+  month_days[1]=29  # February gets 29 days in a leap year
+fi
+
+# Validate the month and day
+if [ "$month" -lt 1 ] || [ "$month" -gt 12 ] || [ "$day" -lt 1 ] || [ "$day" -gt "${month_days[$((month-1))]}" ]; then
+  echo "Invalid date."
+  exit 1
+fi
+
+echo "Valid Date."
