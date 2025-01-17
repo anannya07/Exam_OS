@@ -1,0 +1,9 @@
+filecount=$(ls -1 | wc -l)
+echo "The filecount is $filecount"
+largestfile=$(ls -S | head -n 1)
+echo "The largest file: $largestfile"
+###
+~/workspace$ sh main.sh 
+The filecount is 8
+The largest file: generated-icon.png
+~/workspace$ 
