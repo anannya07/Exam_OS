@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Prompt user for input
+read -p "Enter your birthday (dd/mm/yyyy): " birth_date
+
+# Set IFS to split the input by '/'
+IFS='/' read -r birth_day birth_month birth_year <<< "$birth_date"
+
+# Get the current date
+current_date=$(date +%d/%m/%Y)
+
+# Split current date into day, month, and year
+IFS='/' read -r current_day current_month current_year <<< "$current_date"
+
+# Calculate age in years, months, and days
+age_years=$((current_year - birth_year))
+age_months=$((current_month - birth_month))
+age_days=$((current_day - birth_day))
+
+# Adjust if the day is negative
+if [ $age_days -lt 0 ]; then
+    age_months=$((age_months - 1))
+    age_days=$((age_days + 30))  # Assuming 30 days in a month for simplicity
+fi
+
+# Adjust if the month is negative after day adjustment
+if [ $age_months -lt 0 ]; then
+    age_years=$((age_years - 1))
+    age_months=$((age_months + 12))
+fi
+
+echo "You are $age_years years, $age_months months, and $age_days days old."
