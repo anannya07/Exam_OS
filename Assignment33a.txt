@@ -1,0 +1,21 @@
+#main.sh
+echo "Enter five numbers:" 
+read -a numbers
+sum=0
+for num in  "${numbers[@]}"; do
+  sum=$(( sum + num ))
+done
+echo "The sum is $sum"
+
+#run_main.sh
+script= "./main.sh"
+if [ -f "$script" ]; then
+  bash $script
+else
+  exit 1
+fi
+~/workspace$ chmod +x main.sh
+~/workspace$ sh run_main.sh
+Enter five numbers:
+45 12 100 78 -9
+The sum is 226
