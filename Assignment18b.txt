@@ -1,0 +1,8 @@
+echo "Enter any number:"
+read num
+m=$(( num % 2 ))
+case $m in
+0) echo "The number $num is even";;
+1) echo "The number $num is odd";;
+*) echo "Invalid choice";;
+esac
