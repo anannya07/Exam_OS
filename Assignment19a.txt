@@ -1,0 +1,19 @@
+input_file="$1"
+temp_file=$(mktemp)
+while IFS='|' read -r d temp; do
+  weather=""
+  if [ "$temp" -lt 15 ]; then
+    weather="very cold"
+  elif [ "$temp" -ge 15 ] && [ "$temp" -lt 25 ]; then
+    weather="Cold"
+  elif [ "$temp" -ge 25 ] && [ "$temp" -lt 35 ]; then
+    weather="Hot"
+  else
+    weather="very hot"
+  fi
+  echo "$d|$temp|$weather" >> "$temp_file"
+done < "$input_file"
+
+# Replace original file with the processed file
+mv "$temp_file" "$input_file"
+cat "$input_file"
