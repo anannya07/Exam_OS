@@ -1,0 +1,21 @@
+read -p "Enter the file name:" file
+read -p "How many number record want to insert:" n
+for (( i=1; i<=n ;++i ));do
+  echo "Enter details for record $i :"
+  read -p "Enter roll:" roll
+  read -p "Enter name:" name
+  read -p "Enter marks:" marks
+  echo "$roll|$name|$marks" >> "$file"
+done
+echo "record created successfully"
+#output
+Enter the file name:p.txt
+How many number record want to insert:2
+Enter details for record 1 :
+Enter roll:4
+Enter name:7
+Enter marks:8
+Enter details for record 2 :
+Enter roll:5
+Enter name:1
+Enter marks:2
