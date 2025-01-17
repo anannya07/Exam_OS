@@ -1,0 +1,15 @@
+read -p "Enter the file of input:" in
+read -p "Enter the file of output:" out
+while IFS="|" read -r r n m; do
+  grade=""
+  case $m in
+    9[0-9]|100) grade="O";;
+    8[0-9]) grade="E";;
+    7[0-9]) grade="A";;
+    6[0-9]) grade="B";;
+    5[0-9]) grade="C";;
+    4[0-9]) grade="D";;
+    *)grade="F"
+  esac
+echo "$r|$n|$m|$grade" >> "$out"
+done < "$in"
