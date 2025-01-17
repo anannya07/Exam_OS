@@ -1,0 +1,12 @@
+read -p "Enter the file name:" file
+t=$(mktemp)
+read -p "Enter the  number of new record:" n
+for (( i=1; i<=n; ++i )); do
+  echo "Enter record for $i:"
+  read -p "Enter the roll:" roll
+  read -p "Enter the name:" name
+  read -p "Enter the marks:" marks
+  echo "$roll|$name|$marks" >> $file
+done
+sort -t '|' -k3 -n $file > $t
+mv $t $file
